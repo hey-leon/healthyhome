@@ -1,5 +1,5 @@
 {
-  "name": "ng_template",
+  "name": "md_template",
   "version": "",
   "description": "",
   "main": "",
@@ -20,6 +20,7 @@
     "gulp-filter": "latest",
     "gulp-imagemin": "latest",
     "gulp-sass": "latest",
+    "gulp-ng-annotate": "latest",
     "gulp-angular-templatecache": "latest",
     "gulp-uglify": "latest",
     "jasmine-core": "latest",

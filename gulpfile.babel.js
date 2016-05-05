@@ -1,6 +1,7 @@
 import gulp from 'gulp'
 import concat from 'gulp-concat'
 import babel from 'gulp-babel'
+import annotate from 'gulp-ng-annotate'
 import uglify from 'gulp-uglify'
 import sass from 'gulp-sass'
 import prefix from 'gulp-autoprefixer'
@@ -21,9 +22,10 @@ gulp.task('html', () => {
 
 /*  javascript  */
 gulp.task('javascript', () => {
-  return gulp.src('_source/**/*.js')
+  return gulp.src([ '_source/**.module.js', '_source/**/*.js' ])
     .pipe(concat('app.js'))
     .pipe(babel({ presets: ['es2015'] }))
+    .pipe(annotate())
     .pipe(uglify())
     .pipe(gulp.dest('_build'))
 })
@@ -96,5 +98,5 @@ gulp.task('build:tasks', [
 gulp.task('default', () => {
   bsync({ server: '_build/' })
 
-  gulp.watch('_source/**/*', ['build'])
+  gulp.watch([ '_source/**/*', 'bower_modules/**/*' ], ['build'])
 })
