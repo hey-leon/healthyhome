@@ -1,0 +1,33 @@
+{
+  "name": "ng_template",
+  "version": "",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": ""
+  },
+  "author": "Leon Pearce <leonp1991@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-preset-es2015": "latest",
+    "browser-sync": "latest",
+    "gulp": "latest",
+    "gulp-autoprefixer": "latest",
+    "gulp-babel": "latest",
+    "gulp-cache": "latest",
+    "gulp-concat": "latest",
+    "gulp-csso": "latest",
+    "gulp-filter": "latest",
+    "gulp-imagemin": "latest",
+    "gulp-sass": "latest",
+    "gulp-angular-templatecache": "latest",
+    "gulp-uglify": "latest",
+    "jasmine-core": "latest",
+    "karma": "latest",
+    "karma-jasmine": "latest",
+    "karma-nyan-reporter": "latest",
+    "karma-phantomjs-launcher": "latest",
+    "main-bower-files": "latest",
+    "phantomjs-prebuilt": "latest"
+  }
+}

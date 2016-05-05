@@ -1,0 +1,14 @@
+{
+  "name": "md_template",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Leon Pearce <leonp1991@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular": "latest",
+    "angular-material": "latest"
+  },
+  "devDependencies": {}
+}
