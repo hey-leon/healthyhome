@@ -1,6 +1,6 @@
 {
-  "name": "md_template",
-  "description": "",
+  "name": "waspmote_farm",
+  "description": "1",
   "main": "",
   "authors": [
     "Leon Pearce <leonp1991@gmail.com>"
@@ -8,7 +8,8 @@
   "license": "MIT",
   "dependencies": {
     "angular": "latest",
-    "angular-material": "latest"
+    "angular-material": "latest",
+    "angular-chart.js": "^0.10.2"
   },
   "devDependencies": {}
 }

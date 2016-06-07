@@ -5,7 +5,7 @@
     .module('templates', [])
 
   angular
-    .module('app', ['templates', 'ngMaterial'])
+    .module('app', ['templates', 'ngMaterial', 'chart.js'])
 
     .config(($mdThemingProvider) => {
       $mdThemingProvider.theme('default')

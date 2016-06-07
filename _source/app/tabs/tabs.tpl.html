@@ -1,0 +1,15 @@
+<div id='tabs' layout='column' ng-controller='Tabs as tabs'>
+
+  <md-tabs
+      class='md-primary' md-stretch-tabs='always'
+      md-swipe-content md-whiteframe='3' layout-fill>
+
+    <md-tab ng-repeat='tab in tabs.tabs' label='{{tab.label}}'>
+      <md-tab-content layout-fill>
+        <ng-include src='tab.template'></ng-include>
+      </md-tab-content>
+    </md-tab>
+
+  </md-tabs>
+
+</div>

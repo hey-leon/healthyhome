@@ -1,0 +1,92 @@
+<!-- region page -->
+<!-- home page -->
+<div
+    id='region'
+    ng-controller='Region as region'
+    layout-fill>
+
+  <div
+      class='content'
+      layout='column' layout-align='start stretch'
+      layout-padding>
+
+    <!-- welcome card -->
+    <md-card id='welcome'>
+      <md-card-content layout-padding>
+        <h2>View the Air and Water Quality in the Region</h2>
+        <p>
+          Use the control panel below to view the air and water quality average for a town, area, state, or nation wide!
+        </p>
+      </md-card-content>
+      <md-card-actions layout="row" layout-align="end center" layout-padding>
+          <md-button class='md-primary'>WANT MORE TIPS?</md-button>
+          <md-button class='md-primary'>OK, I GET IT.</md-button>
+        </md-card-actions>
+    </md-card>
+
+    <!-- control panel -->
+    <md-card id='controls'>
+      <md-card-content layout-padding>
+        <h2>Select a Region to Display</h2>
+      </md-card-content>
+      <md-card-actions layout="row" layout-align="center center" layout-padding>
+        <md-input-container>
+          <label>State</label>
+          <md-select ng-model='region.state'>
+            <md-option ng-repeat='state in region.states'>{{state}}</md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Area</label>
+          <md-select ng-model='region.area'>
+            <md-option ng-repeat='area in region.areas'>{{area}}</md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Town</label>
+          <md-select ng-model='region.town'>
+            <md-option ng-repeat='town in region.towns'>{{town}}</md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container>
+          <md-button class='md-primary'>SHOW RESULTS!</md-button>
+        </md-input-container>
+      </md-card-actions>
+    </md-card>
+
+    <!-- air health -->
+    <md-card id='air' layout-padding layout-margin >
+      <md-card-content layout-padding>
+        <h2>Air Quality</h2>
+        <p>
+          The current air quality is of a <span class='airQuality'>{{region.air.quality}}</span> level.
+          The percentage of Hydro-carbons in the atmosphere is at a <span class='hydroCarbonLevel'>{{region.air.hydrocarbons}}</span> level.
+        </p>
+      </md-card-content>
+      <canvas
+          class='chart chart-line' chart-labels='region.air.labels'
+          chart-series='region.air.series' chart-data='region.air.data'
+          chart-colours='region.air.colours'
+          >
+      </canvas>
+    </md-card>
+
+    <!-- water health -->
+    <md-card id='water' layout-padding layout-margin >
+      <md-card-content layout-padding>
+        <h2>Water Quality</h2>
+        <p>
+          The current water quality is of a <span class='waterQuality'>{{region.water.quality}}</span> standard.
+          The percentage of fracking fluids present in the water is at a <span class='frackingLevel'>{{region.water.fracking}}</span> level.
+        </p>
+      </md-card-content>
+      <canvas
+          class='chart chart-line' chart-labels='region.water.labels'
+          chart-series='region.water.series' chart-data='region.water.data'
+          chart-colours='region.water.colours'
+          >
+      </canvas>
+    </md-card>
+  </div>
+
+</div>

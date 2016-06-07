@@ -1,0 +1,61 @@
+<!-- home page -->
+<div
+    id='home'
+    ng-controller='Home as home'
+    layout-fill>
+
+  <div
+      class='content'
+      layout='column' layout-align='start stretch'
+      layout-padding>
+
+    <!-- welcome card -->
+    <md-card id='welcome'>
+      <md-card-content layout-padding>
+        <h2>Welcome, and Good Morning!</h2>
+        <p>
+          This area will let you view the current health of your farm! you will be able to view the air quality and water quality in an easy and understanble way!
+        </p>
+      </md-card-content>
+      <md-card-actions layout="row" layout-align="end center" layout-padding>
+          <md-button class='md-primary'>WANT MORE TIPS?</md-button>
+          <md-button class='md-primary'>OK, I GET IT.</md-button>
+        </md-card-actions>
+    </md-card>
+
+    <!-- air health -->
+    <md-card id='air' layout-padding layout-margin >
+      <md-card-content layout-padding>
+        <h2>Air Quality</h2>
+        <p>
+          The current air quality is of a <span class='airQuality'>{{home.air.quality}}</span> level.
+          The percentage of Hydro-carbons in the atmosphere is at a <span class='hydroCarbonLevel'>{{home.air.hydrocarbons}}</span> level.
+        </p>
+      </md-card-content>
+      <canvas
+          class='chart chart-line' chart-labels='home.air.labels'
+          chart-series='home.air.series' chart-data='home.air.data'
+          chart-colours='home.air.colours'
+          >
+      </canvas>
+    </md-card>
+
+    <!-- water health -->
+    <md-card id='water' layout-padding layout-margin >
+      <md-card-content layout-padding>
+        <h2>Water Quality</h2>
+        <p>
+          The current water quality is of a <span class='waterQuality'>{{home.water.quality}}</span> standard.
+          The percentage of fracking fluids present in the water is at a <span class='frackingLevel'>{{home.water.fracking}}</span> level.
+        </p>
+      </md-card-content>
+      <canvas
+          class='chart chart-line' chart-labels='home.water.labels'
+          chart-series='home.water.series' chart-data='home.water.data'
+          chart-colours='home.water.colours'
+          >
+      </canvas>
+    </md-card>
+  </div>
+
+</div>

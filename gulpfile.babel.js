@@ -16,26 +16,24 @@ import {Server} from 'karma'
 
 /*  html  */
 gulp.task('html', () => {
-  return gulp.src([ '_source/**/*.html', '!_source/**/*.tpl.html' ])
-    .pipe(gulp.dest('_build'))
+  return gulp.src([ '_source/**/*.html', '!_source/**/*.tpl.html' ]).pipe(gulp.dest('_build'))
 })
 
 /*  javascript  */
 gulp.task('javascript', () => {
-  return gulp.src([ '_source/**.module.js', '_source/**/*.js' ])
-    .pipe(concat('app.js'))
-    .pipe(babel({ presets: ['es2015'] }))
-    .pipe(annotate())
-    .pipe(uglify())
+  return gulp.src([
+    '_source/**/*.module.js', '_source/**/*.service.js',
+    '_source/**/*.ctrl.js', '_source/**/*.dir.js'
+  ]).pipe(concat('app.js')).pipe(babel({ presets: ['es2015'] }))
+    .pipe(annotate()).pipe(uglify())
     .pipe(gulp.dest('_build'))
 })
 
 /*  stylesheets  */
 gulp.task('stylesheets', () => {
-  return gulp.src(['_source/stylesheets/**/*.scss', '!_source/**/_*'])
-    .pipe(sass())
-    .pipe(prefix({ browsers: ['> 5%'] }))
-    .pipe(optimise())
+  return gulp.src([ '_source/styles/base.scss', '_source/**/*.scss', '!_source/**/_*' ])
+    .pipe(concat('styles.scss')).pipe(sass())
+    .pipe(prefix({ browsers: ['> 5%'] })).pipe(optimise())
     .pipe(gulp.dest('_build'))
 })
 
@@ -55,8 +53,7 @@ gulp.task('static', () => {
 /*  templates  */
 gulp.task('templates', () => {
   return gulp.src('_source/**/*.tpl.html')
-      .pipe(tplcache())
-      .pipe(uglify())
+      .pipe(tplcache()).pipe(uglify())
       .pipe(gulp.dest('_build'))
 })
 
@@ -66,37 +63,32 @@ gulp.task('bower', () => {
   const cssFilter = filter('**/*.css', {restore: true})
 
   return gulp.src(bower())
-    .pipe(jsFilter)
-    .pipe(concat('frameworks.js')).pipe(uglify())
-    .pipe(jsFilter.restore)
-    .pipe(cssFilter)
+    .pipe(jsFilter).pipe(concat('frameworks.js'))//.pipe(uglify())
+    .pipe(jsFilter.restore).pipe(cssFilter)
     .pipe(concat('frameworks.css')).pipe(optimise())
-    .pipe(cssFilter.restore)
-    .pipe(gulp.dest('_build'))
+    .pipe(cssFilter.restore).pipe(gulp.dest('_build'))
 })
 
 /*  test  */
 gulp.task('test', (done) => {
   return new Server({
     configFile: `${__dirname}/karma.conf.js`,
-    autoWatch: false,
-    singleRun: true
+    autoWatch: false, singleRun: true
   }, done).start()
 })
 
-/*  build  */
+/*  build: browser & tests  */
 gulp.task('build', ['build:tasks'], () => {
-  bsync.reload()
-  gulp.start('test')
+  bsync.reload(); gulp.start('test')
 })
+/*  build tasks  */
 gulp.task('build:tasks', [
   'html', 'javascript', 'stylesheets',
   'templates', 'images', 'static', 'bower'
 ])
 
 /*  default  */
-gulp.task('default', () => {
-  bsync({ server: '_build/' })
-
+gulp.task('default', ['build:tasks'], () => {
+  bsync({ server: '_build/', port: '3001' })
   gulp.watch([ '_source/**/*', 'bower_modules/**/*' ], ['build'])
 })
