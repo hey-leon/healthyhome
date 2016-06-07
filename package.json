@@ -10,6 +10,7 @@
   "license": "MIT",
   "devDependencies": {
     "babel-preset-es2015": "latest",
+    "bower": "latest",
     "browser-sync": "latest",
     "gulp": "latest",
     "gulp-autoprefixer": "latest",
