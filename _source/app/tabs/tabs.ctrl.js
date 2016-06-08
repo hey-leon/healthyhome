@@ -9,6 +9,7 @@
     let Tabs = this
 
     Tabs.tabs = [
+      { label: 'updates', template: 'app/tabs/updates/updates.tpl.html' },
       { label: 'home', template: 'app/tabs/home/home.tpl.html' },
       { label: 'region', template: 'app/tabs/region/region.tpl.html' }
     ]

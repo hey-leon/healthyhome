@@ -10,15 +10,15 @@
       layout='column' layout-align='start stretch'
       layout-padding>
 
-    <!-- welcome card -->
-    <md-card id='welcome'>
+    <!-- tip card -->
+    <md-card id='regionTip'>
       <md-card-content layout-padding>
-        <h2>View the Air and Water Quality in the Region</h2>
+        <h2>View the air &amp; water quality in a region</h2>
         <p>
           Use the control panel below to view the air and water quality average for a town, area, state, or nation wide!
         </p>
       </md-card-content>
-      <md-card-actions layout="row" layout-align="end center" layout-padding>
+      <md-card-actions layout='row' layout-align="end center" layout-padding>
           <md-button class='md-primary'>WANT MORE TIPS?</md-button>
           <md-button class='md-primary'>OK, I GET IT.</md-button>
         </md-card-actions>
@@ -29,7 +29,7 @@
       <md-card-content layout-padding>
         <h2>Select a Region to Display</h2>
       </md-card-content>
-      <md-card-actions layout="row" layout-align="center center" layout-padding>
+      <md-card-actions layout='column' layout-gt-sm='row' layout-align-gt-sm="center center" layout-padding>
         <md-input-container>
           <label>State</label>
           <md-select ng-model='region.state'>
@@ -49,7 +49,9 @@
           </md-select>
         </md-input-container>
         <md-input-container>
-          <md-button class='md-primary'>SHOW RESULTS!</md-button>
+          <div layout-xs='row' layout-align-xs='end center'>
+            <md-button class='md-primary'>SHOW RESULTS!</md-button>
+          </div>
         </md-input-container>
       </md-card-actions>
     </md-card>

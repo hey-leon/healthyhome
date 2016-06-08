@@ -1,0 +1,56 @@
+<!-- updates page -->
+<div
+    id='home'
+    ng-controller='Home as home'
+    layout-fill>
+
+  <div
+      class='content'
+      layout='column' layout-align='start stretch'
+      layout-padding>
+
+    <!-- tip card -->
+    <md-card id='updatesTip'>
+      <md-card-content layout-padding>
+        <h2>View notifications on critical changes in conditions</h2>
+        <p>
+          This area will let you when their has been a major change in the quality of the air or water on your farm. Otherwise you can also see a breakdown of the current status.
+        </p>
+      </md-card-content>
+      <md-card-actions layout="row" layout-align="end center" layout-padding>
+        <md-button class='md-primary'>WANT MORE TIPS?</md-button>
+        <md-button class='md-primary'>OK, I GET IT.</md-button>
+      </md-card-actions>
+    </md-card>
+
+    <md-card id='updatesTip'>
+      <md-card-content layout-padding>
+        <h2>Good Morning!</h2>
+        <p>The air and water quality both still appear to be high! The current conditions on your farm:</p>
+
+        <!-- collumns for conditions -->
+        <div layout='row'>
+          <!-- air conditions -->
+          <div layout='column' flex>
+            <h3>Air Quality</h3>
+            <p>94% Clean Air</p>
+            <p>2% Hydrocarbons</p>
+            <p>4% Methane</p>
+          </div>
+          <!-- water conditions -->
+          <div layout='column' flex>
+            <h3>Water Quality</h3>
+            <p>92% Clean water</p>
+            <p>5% fracking fluid</p>
+            <p>86% water volume</p>
+          </div>
+        </div>
+
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class='md-primary'>More Info?</md-button>
+        </md-card-actions>
+      </md-card-content>
+    </md-card>
+  </div>
+
+</div>
